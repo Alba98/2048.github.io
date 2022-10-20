@@ -35,56 +35,56 @@ hr {
 /* Piezas de colores */
 
 .x2 {
-    background-color: plum;
+    background-color: #D098EE;
     color: #727371;
 }
 
 .x4 {
-    background-color: palegreen;
+    background-color: #EDE4AF;
     color: #727371;
 }
 
 .x8 {
-    background-color: palegoldenrod;
-    color: #727371;
+    background-color: #EDA4D3;
+    color: white;
 }
 
-.x16 {
-    background-color: paleturquoise;
-    color: #727371;
+.x16{
+    background-color: #8BED80;
+    color: white;
 }
 
-.x32 {
-    background-color: lightcoral;
-    color: #727371;
+.x32{
+    background-color: #8CEDBB;
+    color: white;
 }
 
-.x64 {
-    background-color: lightcyan;
-    color: #727371;
+.x64{
+    background-color: #ED7668;
+    color: white;
 }
 
-.x128 {
-    background-color: lightgoldenrodyellow;
-    color: #727371;
+.x128{
+    background-color: #D5ED74;
+    color: white;
 }
 
-.x256 {
-    background-color: lightgreen;
-    color: #727371;
+.x256{
+    background-color: #C7D8ED;
+    color: white;
 }
 
-.x512 {
-    background-color: lightblue;
-    color: #727371;
+.x512{
+    background-color: #ED5CBC;
+    color: white;
 }
 
-.x1024 {
-    background-color: lightpink;
-    color: #727371;
+.x1024{
+    background-color: #F0EF71;
+    color: white;
 }
 
-.x2048 {
-    background-color: peru;
-    color: #727371;
+.x2048{
+    background-color: #968CED;
+    color: white;
 }

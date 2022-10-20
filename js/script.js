@@ -24,7 +24,9 @@ function iniciarJuego() {
             document.getElementById("tablero").append(ficha);
         }
     }
-    
+    //Añadir las dos primeras fichas
+    ponDos();
+    ponDos();
 }
 
 function actualizarFicha(ficha, num) {
@@ -40,15 +42,19 @@ function actualizarFicha(ficha, num) {
 document.addEventListener('keyup', (e) => {
     if (e.code == "ArrowLeft" || e.code == "KeyA") {
         deslizarIzq();
+        ponDos();
     }
     else if (e.code == "ArrowRight" || e.code == "KeyD") {
         deslizarDch();
+        ponDos();
     }
     else if (e.code == "ArrowUp" || e.code == "KeyW") {
         deslizarArriba();
+        ponDos();
     }
     else if (e.code == "ArrowDown" || e.code == "KeyS" ) {
         deslizarAbajo();
+        ponDos();
     }
     document.getElementById("score").innerText = score;
 })
@@ -84,9 +90,9 @@ function deslizarIzq() {
         fila = deslizar(fila);
         tablero[y] = fila;
         for (let x = 0; x < columnas; x++){
-            let tile = document.getElementById(y.toString() + "-" + x.toString());
+            let ficha = document.getElementById(y.toString() + "-" + x.toString());
             let num = tablero[y][x];
-            actualizarFicha(tile, num);
+            actualizarFicha(ficha, num);
         }
     }
 }
@@ -99,37 +105,69 @@ function deslizarDch() {
         fila.reverse();
         tablero[y] = fila;
         for (let x = 0; x < columnas; x++){
-            let tile = document.getElementById(y.toString() + "-" + x.toString());
+            let ficha = document.getElementById(y.toString() + "-" + x.toString());
             let num = tablero[y][x];
-            actualizarFicha(tile, num);
+            actualizarFicha(ficha, num);
         }
     }
 }
 
 function deslizarArriba() {
-    for (let c = 0; c < columnas; c++) {
-        let fila = [tablero[0][c], tablero[1][c], tablero[2][c], tablero[3][c]];
+    for (let x = 0; x < columnas; x++) {
+        let fila = [tablero[0][x], tablero[1][x], tablero[2][x], tablero[3][x]];
         fila = deslizar(fila);
-        for (let r = 0; r < filas; r++){
-            tablero[r][c] = fila[r];
-            let tile = document.getElementById(r.toString() + "-" + c.toString());
-            let num = tablero[r][c];
-            actualizarFicha(tile, num);
+        for (let y = 0; y < filas; y++){
+            tablero[y][x] = fila[y];
+            let ficha = document.getElementById(y.toString() + "-" + x.toString());
+            let num = tablero[y][x];
+            actualizarFicha(ficha, num);
         }
     }
 }
 
 function deslizarAbajo() {
-    for (let c = 0; c < columnas; c++) {
-        let fila = [tablero[0][c], tablero[1][c], tablero[2][c], tablero[3][c]];
+    for (let x = 0; x < columnas; x++) {
+        let fila = [tablero[0][x], tablero[1][x], tablero[2][x], tablero[3][x]];
         fila.reverse();
         fila = deslizar(fila);
         fila.reverse();
-        for (let r = 0; r < filas; r++){
-            tablero[r][c] = fila[r];
-            let tile = document.getElementById(r.toString() + "-" + c.toString());
-            let num = tablero[r][c];
-            actualizarFicha(tile, num);
+        for (let y = 0; y < filas; y++){
+            tablero[y][x] = fila[y];
+            let ficha = document.getElementById(y.toString() + "-" + x.toString());
+            let num = tablero[y][x];
+            actualizarFicha(ficha, num);
+        }
+    }
+}
+
+function hayCeldadasVacias() {
+    let count = 0;
+    for (let y = 0; y < filas; y++) {
+        for (let x = 0; x < columnas; x++) {
+            //Comprobar existe al menos un zero
+            if (tablero[y][x] == 0) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function ponDos() {
+    if (!hayCeldadasVacias()) {
+        return;
+    }
+    let found = false;
+    while (!found) {
+        //find random row and column to place a 2 in
+        let y = Math.floor(Math.random() * filas);
+        let x = Math.floor(Math.random() * columnas);
+        if (tablero[y][x] == 0) {
+            tablero[y][x] = 2;
+            let ficha = document.getElementById(y.toString() + "-" + x.toString());
+            ficha.innerText = "2";
+            ficha.classList.add("x2");
+            found = true;
         }
     }
 }
