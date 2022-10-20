@@ -24,7 +24,7 @@ hr {
     border: 5px solid #bbada0
     ;
 
-    font-size: 40px;
+    font-size: 38px;
     font-weight: bold;
 
     display: flex;
@@ -85,6 +85,6 @@ hr {
 }
 
 .x2048 {
-    background-color: lavender;
+    background-color: peru;
     color: #727371;
 }
